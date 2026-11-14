@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     # Supports PostgreSQL (postgresql+psycopg2://...) and SQLite fallback for local run/tests
     DATABASE_URL: str = "sqlite:///./astromission.db"
 
-    CORS_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000"
+    CORS_ORIGINS: str = "https://jayasingh0404.github.io,http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000"
 
     AI_PROVIDER: str = "knowledge_engine"
     AI_API_KEY: str = ""
