@@ -1,0 +1,109 @@
+{
+  "id": "mars-jezero-colony",
+  "name": "Ares Jezero Delta Research Base",
+  "planet": "mars",
+  "tagline": "Sustain a self-reliant human research base on the Red Planet.",
+  "description": "Lead an expedition in Mars' Jezero Crater delta. Operate with reduced solar flux (43% of Earth/Moon), survive multi-sol regional dust storms that choke solar power, manage subsurface water recovery, and grow hydroponic food.",
+  "difficulty_default": "intermediate",
+  "default_duration_days": 15,
+  "default_crew_size": 4,
+  "environmental_constraints": {
+    "gravity_g": 0.378,
+    "solar_irradiance_factor": 0.68,
+    "dust_storm_chance_base": 0.22,
+    "baseline_radiation_msv_per_day": 0.78,
+    "dust_abrasion_rate": 2.0,
+    "atmosphere": "Thin CO2 (95% CO2, ~0.6 kPa) \u2014 Modest radiation buffer, frequent dust storms",
+    "surface_temp_range_c": "-110\u00b0C (Night) to +20\u00b0C (Equatorial Noon)"
+  },
+  "major_hazards": [
+    "Regional and global Martian dust storms cutting solar array output by 50\u201380%",
+    "Lower baseline solar irradiance due to Mars' 1.52 AU distance from the Sun",
+    "Long communication delay with Earth requiring autonomous emergency triage",
+    "High water & power demand to sustain hydroponic food production"
+  ],
+  "objectives": [
+    {
+      "id": "survive_duration",
+      "title": "Maintain crew survival for the full mission duration",
+      "type": "survival",
+      "target": 100
+    },
+    {
+      "id": "keep_water_safe",
+      "title": "Keep Water reserves above critical threshold (40 L)",
+      "type": "resource_min",
+      "resource": "water",
+      "target": 40
+    },
+    {
+      "id": "establish_greenhouse",
+      "title": "Operate an active Hydroponic Greenhouse or Water Recycler",
+      "type": "facility_count",
+      "target": 6
+    },
+    {
+      "id": "complete_research",
+      "title": "Accumulate at least 50 Planetary Science Points",
+      "type": "science_points",
+      "target": 50
+    }
+  ],
+  "starting_resources": {
+    "oxygen": {
+      "current": 48.0,
+      "capacity": 85.0,
+      "unit": "kg",
+      "critical": 10.0
+    },
+    "water": {
+      "current": 240.0,
+      "capacity": 380.0,
+      "unit": "L",
+      "critical": 40.0
+    },
+    "food": {
+      "current": 60.0,
+      "capacity": 120.0,
+      "unit": "kg",
+      "critical": 12.0
+    },
+    "energy": {
+      "current": 175.0,
+      "capacity": 260.0,
+      "unit": "kWh",
+      "critical": 30.0
+    },
+    "radiation_shielding": 60.0,
+    "cumulative_radiation_msv": 0.0,
+    "crew_health": 100.0,
+    "infrastructure_condition": 100.0,
+    "science_points": 0.0
+  },
+  "starting_facilities": [
+    {
+      "facility_id": "crew_habitat",
+      "level": 1,
+      "grid_x": 0.0,
+      "grid_z": 0.0
+    },
+    {
+      "facility_id": "solar_array",
+      "level": 1,
+      "grid_x": -6.0,
+      "grid_z": -4.0
+    },
+    {
+      "facility_id": "battery_storage",
+      "level": 1,
+      "grid_x": -6.0,
+      "grid_z": 2.0
+    },
+    {
+      "facility_id": "water_recycler",
+      "level": 1,
+      "grid_x": 5.0,
+      "grid_z": 3.0
+    }
+  ]
+}

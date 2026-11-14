@@ -1,0 +1,655 @@
+[
+  {
+    "id": "solar_storm",
+    "title": "Solar Particle Event (Coronal Mass Ejection)",
+    "description": "Space weather sensors detect an incoming proton flux spike from an X-class solar flare. Unshielded surface activity risks severe acute radiation exposure and electronics upsets.",
+    "severity": "critical",
+    "planets": [
+      "moon",
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 2,
+      "weight": 1.2
+    },
+    "affected_systems": [
+      "radiation_protection",
+      "crew_health",
+      "energy"
+    ],
+    "scientific_explanation": "Solar Particle Events (SPEs) accelerate protons to relativistic speeds. Without Earth's magnetosphere, astronauts must retreat behind high-mass or hydrogen-rich shielding (water walls or regolith berms) until flux subsides.",
+    "nasa_reference_id": "nasa-space-radiation-hrp",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Order all crew into the Radiation Shelter & power down non-essential surface ops",
+        "tradeoff": "Minimizes radiation dose and protects crew health, but consumes 18 kWh emergency shelter power and pauses science production today.",
+        "effects": {
+          "energy": -18.0,
+          "radiation_msv_delta": 0.4,
+          "crew_health": 0.0,
+          "science_points": -3.0
+        }
+      },
+      {
+        "id": "B",
+        "label": "Reroute water reserves into habitat water-wall bladders & reduce EVA",
+        "tradeoff": "Uses 20 L of water for temporary thermal/radiation buffering and 10 kWh pump energy with moderate radiation protection.",
+        "effects": {
+          "water": -20.0,
+          "energy": -10.0,
+          "radiation_msv_delta": 1.6,
+          "crew_health": -3.0
+        }
+      },
+      {
+        "id": "C",
+        "label": "Continue normal surface operations to preserve battery & schedule",
+        "tradeoff": "Saves electrical energy today, but exposes astronauts to dangerous acute solar proton radiation and damages unshielded electronics.",
+        "effects": {
+          "energy": 0.0,
+          "radiation_msv_delta": 5.5,
+          "crew_health": -14.0,
+          "infrastructure_condition": -6.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "dust_storm",
+    "title": "Regional Martian Dust Storm Front",
+    "description": "High-altitude iron-oxide dust clouds are sweeping across the crater basin, reducing atmospheric optical depth (tau) and coating photovoltaic panels.",
+    "severity": "high",
+    "planets": [
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 2,
+      "weight": 1.5
+    },
+    "affected_systems": [
+      "energy",
+      "infrastructure_condition"
+    ],
+    "scientific_explanation": "Martian dust storms can obscure 60\u201390% of direct sunlight for days while fine electrostatically charged dust settles on solar panels and thermal radiators.",
+    "nasa_reference_id": "nasa-mars-journey",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Deploy electrostatic dust-repulsion sweeps & throttle non-critical loads",
+        "tradeoff": "Spends 15 kWh battery reserves to keep solar panels clean, preserving infrastructure condition.",
+        "effects": {
+          "energy": -15.0,
+          "infrastructure_condition": 2.0,
+          "solar_penalty_override": 0.8
+        }
+      },
+      {
+        "id": "B",
+        "label": "Send crew in pressurized suits for manual array brushing after peak winds",
+        "tradeoff": "Uses 3.5 kg extra oxygen and 10 L suit cooling water, restoring full solar output.",
+        "effects": {
+          "oxygen": -3.5,
+          "water": -10.0,
+          "crew_health": -2.0,
+          "infrastructure_condition": 4.0
+        }
+      },
+      {
+        "id": "C",
+        "label": "Ride out the storm on battery reserves without exterior intervention",
+        "tradeoff": "Saves oxygen and water, but dust accumulation reduces energy by 35 kWh and abrades exterior seals.",
+        "effects": {
+          "energy": -35.0,
+          "infrastructure_condition": -8.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "solar_panel_malfunction",
+    "title": "Photovoltaic Wing Micro-Meteoroid & Dust Fault",
+    "description": "A primary solar array bus reports a voltage drop caused by micro-meteoroid pitting and abrasive regolith accumulation on the gimbal joint.",
+    "severity": "medium",
+    "planets": [
+      "moon",
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 2,
+      "weight": 1.1
+    },
+    "affected_systems": [
+      "energy",
+      "infrastructure_condition"
+    ],
+    "scientific_explanation": "On airless or thin-atmosphere bodies, micrometeoroids hit at hypervelocity (10\u201370 km/s), requiring modular bypass diodes and robotic array servicing.",
+    "nasa_reference_id": "nasa-fission-solar-power",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Perform immediate EVA module bypass & gimbal lubrication",
+        "tradeoff": "Consumes 2.5 kg O2 and 12 kWh workshop power to fully restore the solar array.",
+        "effects": {
+          "oxygen": -2.5,
+          "energy": -12.0,
+          "infrastructure_condition": 5.0
+        }
+      },
+      {
+        "id": "B",
+        "label": "Isolate the damaged solar string remotely from Mission Control",
+        "tradeoff": "Zero crew risk, but permanently drops today's net energy by 22 kWh until next overhaul.",
+        "effects": {
+          "energy": -22.0,
+          "infrastructure_condition": -3.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "battery_failure",
+    "title": "Battery Cell Thermal Imbalance Alert",
+    "description": "Battery Storage telemetry flags an over-temperature cell bank during peak discharge cycling.",
+    "severity": "high",
+    "planets": [
+      "moon",
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 3,
+      "weight": 1.0
+    },
+    "affected_systems": [
+      "energy",
+      "infrastructure_condition"
+    ],
+    "scientific_explanation": "Space-rated lithium-ion battery banks require active liquid cooling loops and cell-balancing electronics to prevent thermal runaway in vacuum environments.",
+    "nasa_reference_id": "nasa-fission-solar-power",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Flush cooling loop with reserve water & rebalance cells",
+        "tradeoff": "Uses 18 L of water and 10 kWh energy to prevent battery degradation.",
+        "effects": {
+          "water": -18.0,
+          "energy": -10.0,
+          "infrastructure_condition": 3.0
+        }
+      },
+      {
+        "id": "B",
+        "label": "Disconnect the overheating battery bank immediately",
+        "tradeoff": "Protects the base from fire risk without using water, but loses 30 kWh stored energy.",
+        "effects": {
+          "energy": -30.0,
+          "infrastructure_condition": -4.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "water_recycling_failure",
+    "title": "Water Processor Multifiltration Bed Saturation",
+    "description": "Conductivity sensors in the Water Recycler indicate organic contaminant breakthrough in the primary filtration bed.",
+    "severity": "high",
+    "planets": [
+      "moon",
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 3,
+      "weight": 1.1
+    },
+    "affected_systems": [
+      "water",
+      "energy",
+      "crew_health"
+    ],
+    "scientific_explanation": "NASA's Water Processor Assembly relies on multifiltration beds and a high-temperature catalytic reactor. Saturated filters must be swapped or thermally regenerated to keep water potable.",
+    "nasa_reference_id": "nasa-water-recovery-2023",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Run high-temperature catalytic regeneration & replace filter cartridge",
+        "tradeoff": "Requires 20 kWh electrical energy, preserving full water purity and recovering 15 L.",
+        "effects": {
+          "energy": -20.0,
+          "water": 15.0,
+          "infrastructure_condition": 4.0
+        }
+      },
+      {
+        "id": "B",
+        "label": "Bypass recycler for 24h and draw from potable emergency water tanks",
+        "tradeoff": "Saves electricity during low-power periods, but loses 28 L of unrecycled wastewater.",
+        "effects": {
+          "water": -28.0,
+          "energy": 5.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "oxygen_generator_failure",
+    "title": "OGA Electrolysis Cell Stack Pressure Fault",
+    "description": "Deionized water feed sensors in the Oxygen Generator Assembly report bubble lock in the rotary separator.",
+    "severity": "critical",
+    "planets": [
+      "moon",
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 3,
+      "weight": 1.0
+    },
+    "affected_systems": [
+      "oxygen",
+      "energy",
+      "water"
+    ],
+    "scientific_explanation": "In reduced gravity, separating oxygen and hydrogen gas bubbles from liquid water requires precision rotary separators; faults require purge cycles and reserve O2 tanks.",
+    "nasa_reference_id": "nasa-eclss-2023",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Execute high-power nitrogen purge and rebuild electrolysis membrane",
+        "tradeoff": "Consumes 22 kWh energy and 10 L ultra-pure water, restoring +4.0 kg O2 output.",
+        "effects": {
+          "energy": -22.0,
+          "water": -10.0,
+          "oxygen": 4.0,
+          "infrastructure_condition": 3.0
+        }
+      },
+      {
+        "id": "B",
+        "label": "Crack emergency high-pressure O2 tanks while running at 50% capacity",
+        "tradeoff": "Saves electrical energy today, but net oxygen drops by 5.5 kg.",
+        "effects": {
+          "oxygen": -5.5,
+          "energy": 0.0,
+          "infrastructure_condition": -4.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "greenhouse_crop_failure",
+    "title": "Hydroponic Nutrient Pump & Root Hypoxia Alert",
+    "description": "Dissolved oxygen levels in the greenhouse nutrient solution dropped overnight, threatening the dwarf wheat and lettuce harvest.",
+    "severity": "medium",
+    "planets": [
+      "moon",
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 4,
+      "weight": 1.0
+    },
+    "affected_systems": [
+      "food",
+      "water",
+      "energy"
+    ],
+    "scientific_explanation": "In low gravity, water forms thick boundary layers around plant roots, starving them of oxygen unless active aeration and nutrient circulation are maintained.",
+    "nasa_reference_id": "nasa-veggie-space-ag",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Flush nutrient loop with fresh oxygenated water & boost LED spectrum",
+        "tradeoff": "Uses 22 L of water and 14 kWh energy to save the harvest (+4.5 kg food).",
+        "effects": {
+          "water": -22.0,
+          "energy": -14.0,
+          "food": 4.5
+        }
+      },
+      {
+        "id": "B",
+        "label": "Harvest early and sanitize hydroponic trays to conserve water",
+        "tradeoff": "Saves water and power, but yields 6.0 kg less food.",
+        "effects": {
+          "food": -6.0,
+          "water": 5.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "water_leakage",
+    "title": "Secondary Coolant & Potable Water Line Leak",
+    "description": "Acoustic sensors detect a pressure drop in the inter-module water transfer umbilical caused by thermal expansion fatigue.",
+    "severity": "high",
+    "planets": [
+      "moon",
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 2,
+      "weight": 1.1
+    },
+    "affected_systems": [
+      "water",
+      "infrastructure_condition"
+    ],
+    "scientific_explanation": "Extreme day-night temperature swings on the Moon and Mars cause metal and polymer joints to expand and contract repeatedly, requiring rapid isolation valves.",
+    "nasa_reference_id": "nasa-water-recovery-2023",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Dispatch robotic repair arm & sinter replacement polymer seal",
+        "tradeoff": "Consumes 16 kWh energy and limits water loss to 8 L.",
+        "effects": {
+          "energy": -16.0,
+          "water": -8.0,
+          "infrastructure_condition": 3.0
+        }
+      },
+      {
+        "id": "B",
+        "label": "Close manual bulkhead valves and vent the affected line section",
+        "tradeoff": "Zero energy cost, but vents 32 L of potable water into vacuum.",
+        "effects": {
+          "water": -32.0,
+          "infrastructure_condition": -3.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "communication_disruption",
+    "title": "Ka-Band High-Gain Antenna Tracking Drift",
+    "description": "Atmospheric charging and thermal distortion have misaligned the Deep Space Network transponder dish.",
+    "severity": "low",
+    "planets": [
+      "moon",
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 2,
+      "weight": 0.9
+    },
+    "affected_systems": [
+      "energy",
+      "infrastructure_condition"
+    ],
+    "scientific_explanation": "High-frequency Ka-band links offer high data rates for NASA science return but require sub-degree pointing accuracy.",
+    "nasa_reference_id": "nasa-deep-space-network",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Run high-power calibration sweep and transmit buffered science telemetry",
+        "tradeoff": "Costs 12 kWh energy and awards +8 Planetary Science Points.",
+        "effects": {
+          "energy": -12.0,
+          "science_points": 8.0,
+          "infrastructure_condition": 2.0
+        }
+      },
+      {
+        "id": "B",
+        "label": "Switch to low-rate UHF backup beacon until next scheduled pass",
+        "tradeoff": "Saves electrical energy, but delays science transmission (-4 Science Points).",
+        "effects": {
+          "energy": 4.0,
+          "science_points": -4.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "equipment_overheating",
+    "title": "External Thermal Radiator Dust Blanket",
+    "description": "Fine electrostatic dust on the habitat's ammonia heat-rejection radiators is reducing heat dissipation efficiency.",
+    "severity": "medium",
+    "planets": [
+      "moon",
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 3,
+      "weight": 1.0
+    },
+    "affected_systems": [
+      "energy",
+      "water",
+      "infrastructure_condition"
+    ],
+    "scientific_explanation": "In a vacuum or thin atmosphere, heat cannot be convected away by air; spacecraft must radiate heat into space via clean high-emissivity radiator panels.",
+    "nasa_reference_id": "nasa-eclss-2023",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Activate sublimator water-evaporative cooling & robotic radiator brush",
+        "tradeoff": "Uses 15 L water and 10 kWh energy to cool systems and protect equipment.",
+        "effects": {
+          "water": -15.0,
+          "energy": -10.0,
+          "infrastructure_condition": 4.0
+        }
+      },
+      {
+        "id": "B",
+        "label": "Throttle life-support and laboratory electronics to reduce waste heat",
+        "tradeoff": "Saves water, but reduces energy by 18 kWh and crew comfort (-3% health).",
+        "effects": {
+          "energy": -18.0,
+          "crew_health": -3.0,
+          "infrastructure_condition": -3.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "habitat_maintenance_warning",
+    "title": "Airlock Dust Seal & Bearing Abrasion Warning",
+    "description": "After repeated surface EVAs, razor-sharp regolith grains have scored the primary airlock pressure gasket.",
+    "severity": "medium",
+    "planets": [
+      "moon",
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 2,
+      "weight": 1.1
+    },
+    "affected_systems": [
+      "oxygen",
+      "infrastructure_condition"
+    ],
+    "scientific_explanation": "Apollo astronauts found that unweathered lunar dust clung electrostatically to suits and caused slow airlock pressure leaks until seals were cleaned and replaced.",
+    "nasa_reference_id": "nasa-artemis-moon",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Fabricate new elastomer gasket in Maintenance Workshop & vacuum airlock",
+        "tradeoff": "Uses 14 kWh energy to stop the micro-leak and boost infrastructure health (+6%).",
+        "effects": {
+          "energy": -14.0,
+          "infrastructure_condition": 6.0
+        }
+      },
+      {
+        "id": "B",
+        "label": "Top up cabin pressure from O2 tanks and defer overhaul",
+        "tradeoff": "Saves workshop power, but loses 4.0 kg oxygen and degrades seal condition (-5%).",
+        "effects": {
+          "oxygen": -4.0,
+          "infrastructure_condition": -5.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "supply_shortage",
+    "title": "LiOH & Trace Contaminant Filter Depletion",
+    "description": "Cabin air quality monitors show rising trace volatile organic compounds and CO2 scrubber cartridge wear.",
+    "severity": "medium",
+    "planets": [
+      "moon",
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 4,
+      "weight": 0.9
+    },
+    "affected_systems": [
+      "oxygen",
+      "energy",
+      "crew_health"
+    ],
+    "scientific_explanation": "Closed habitats require regenerable amine or metal-oxide CO2 scrubbers and activated charcoal beds to prevent CO2 buildup (hypercapnia).",
+    "nasa_reference_id": "nasa-eclss-2023",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Thermally bake and regenerate amine scrubber beds using base power",
+        "tradeoff": "Uses 18 kWh energy to fully restore cabin air quality and +2 kg O2 recovery.",
+        "effects": {
+          "energy": -18.0,
+          "oxygen": 2.0,
+          "crew_health": 2.0
+        }
+      },
+      {
+        "id": "B",
+        "label": "Vent stale cabin air fraction and replenish from oxygen reserves",
+        "tradeoff": "Saves electricity, but costs 4.5 kg oxygen and slight crew fatigue (-3% health).",
+        "effects": {
+          "oxygen": -4.5,
+          "crew_health": -3.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "rover_malfunction",
+    "title": "Pressurized ISRU Rover Wheel Actuator Jam",
+    "description": "During an ice-mining sortie, compacted regolith jammed the rover's front-right drive actuator 1.8 km from base.",
+    "severity": "medium",
+    "planets": [
+      "moon",
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 3,
+      "weight": 0.9
+    },
+    "affected_systems": [
+      "water",
+      "energy",
+      "oxygen"
+    ],
+    "scientific_explanation": "Surface rovers operate in extreme cold and abrasive dust; modular wheel actuators and winch recovery modes are essential for safe crew return.",
+    "nasa_reference_id": "nasa-isru-overview",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Send rescue EVA team with portable battery pack to free the rover & haul ice",
+        "tradeoff": "Costs 15 kWh energy and 2.5 kg O2, but recovers the rover and +25 L extracted water.",
+        "effects": {
+          "energy": -15.0,
+          "oxygen": -2.5,
+          "water": 25.0,
+          "science_points": 5.0
+        }
+      },
+      {
+        "id": "B",
+        "label": "Jettison the ice payload trailer and limp the rover back on 3-wheel drive",
+        "tradeoff": "Protects crew O2 and battery power, but forfeits today's water haul and damages rover (-4% condition).",
+        "effects": {
+          "infrastructure_condition": -4.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "radiation_alert",
+    "title": "Galactic Cosmic Ray (GCR) Flux Surge",
+    "description": "Heliospheric modulation shifts have increased high-energy heavy-ion (HZE) cosmic ray background readings across the sector.",
+    "severity": "medium",
+    "planets": [
+      "moon",
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 3,
+      "weight": 1.0
+    },
+    "affected_systems": [
+      "radiation_protection",
+      "crew_health"
+    ],
+    "scientific_explanation": "Galactic Cosmic Rays originate outside the solar system and consist of energetic protons and heavy atomic nuclei that penetrate thin aluminum hulls easily.",
+    "nasa_reference_id": "nasa-space-radiation-hrp",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Enforce strict indoor duty shifts & administer antioxidant medical countermeasures",
+        "tradeoff": "Uses 3.0 kg medical/food supplements and 8 kWh power, keeping crew health high (+2%) and dose low.",
+        "effects": {
+          "food": -3.0,
+          "energy": -8.0,
+          "radiation_msv_delta": 0.3,
+          "crew_health": 2.0
+        }
+      },
+      {
+        "id": "B",
+        "label": "Maintain standard EVA schedule to advance science objectives",
+        "tradeoff": "Gains +6 Science Points, but increases cumulative radiation dose (+2.4 mSv) and lowers health (-5%).",
+        "effects": {
+          "science_points": 6.0,
+          "radiation_msv_delta": 2.4,
+          "crew_health": -5.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "unexpected_resource_discovery",
+    "title": "Subsurface Hydrated Mineral & Water-Ice Lens Discovery",
+    "description": "Ground-penetrating radar on the rover has located a high-purity subsurface ice lens and volatile-rich core sample near the outpost perimeter!",
+    "severity": "low",
+    "planets": [
+      "moon",
+      "mars"
+    ],
+    "trigger_conditions": {
+      "min_day": 2,
+      "weight": 1.1
+    },
+    "affected_systems": [
+      "water",
+      "oxygen",
+      "energy"
+    ],
+    "scientific_explanation": "Neutron spectrometers (such as NASA's LRO LEND and Mars Odyssey) have confirmed rich subsurface water ice deposits at the lunar poles and Martian mid-to-high latitudes.",
+    "nasa_reference_id": "nasa-isru-overview",
+    "decision_options": [
+      {
+        "id": "A",
+        "label": "Deploy thermal extraction drills to harvest and purify water & oxygen",
+        "tradeoff": "Invests 20 kWh electrical energy to extract +45 L of water and +5 kg of oxygen!",
+        "effects": {
+          "energy": -20.0,
+          "water": 45.0,
+          "oxygen": 5.0,
+          "science_points": 6.0
+        }
+      },
+      {
+        "id": "B",
+        "label": "Extract pristine geological core samples for the Research Lab",
+        "tradeoff": "Uses only 6 kWh energy, yielding +15 L water and +14 Planetary Science Points.",
+        "effects": {
+          "energy": -6.0,
+          "water": 15.0,
+          "science_points": 14.0
+        }
+      }
+    ]
+  }
+]

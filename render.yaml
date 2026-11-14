@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: astromission-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt && alembic upgrade head
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: astromission-postgres
+          property: connectionString
+      - key: CORS_ORIGINS
+        value: https://astromission.vercel.app,http://localhost:5173
+
+databases:
+  - name: astromission-postgres
+    plan: basic-256mb
+    databaseName: astromission
+    user: astromission_user
+

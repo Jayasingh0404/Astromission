@@ -1,0 +1,324 @@
+[
+  {
+    "id": "crew_habitat",
+    "name": "Crew Habitat Module",
+    "category": "habitation",
+    "description": "Pressurized multi-layer composite living quarters housing astronauts, command consoles, and baseline radiation shielding.",
+    "educational_explanation": "Space habitats must maintain a ~101.3 kPa or exploration-atmosphere pressure shell, thermal control loops, and micrometeroid/radiation protection. Upgrading adds water-wall shielding and crew capacity comfort.",
+    "construction_cost": {
+      "energy": 25.0,
+      "water": 15.0
+    },
+    "energy_consumption": 12.0,
+    "production_rates": {
+      "shielding_bonus": 15.0,
+      "crew_morale": 3.0
+    },
+    "storage_Modifiers": {
+      "oxygen_capacity": 20.0,
+      "water_capacity": 80.0,
+      "food_capacity": 40.0
+    },
+    "maintenance_cost_per_day": 1.2,
+    "max_level": 3,
+    "planet_compatibility": [
+      "moon",
+      "mars"
+    ],
+    "functional_effects": {
+      "power_priority": 1,
+      "base_shielding": 45.0
+    }
+  },
+  {
+    "id": "solar_array",
+    "name": "Photovoltaic Solar Array",
+    "category": "power",
+    "description": "High-efficiency triple-junction sun-tracking solar wings that convert solar irradiance into electrical energy (kWh).",
+    "educational_explanation": "Solar arrays generate clean electricity without fuel, but output drops sharply during lunar night shadows or Martian dust storms, and regolith dust accumulation requires regular cleaning.",
+    "construction_cost": {
+      "energy": 15.0,
+      "water": 5.0
+    },
+    "energy_consumption": 0.0,
+    "production_rates": {
+      "energy": 42.0
+    },
+    "storage_Modifiers": {},
+    "maintenance_cost_per_day": 1.5,
+    "max_level": 3,
+    "planet_compatibility": [
+      "moon",
+      "mars"
+    ],
+    "functional_effects": {
+      "power_priority": 1,
+      "weather_sensitive": true
+    }
+  },
+  {
+    "id": "battery_storage",
+    "name": "Regenerative Battery Bank",
+    "category": "power",
+    "description": "High-density lithium-ion and regenerative fuel-cell energy storage unit to buffer eclipse periods and peak loads.",
+    "educational_explanation": "Without adequate energy storage, surplus daytime solar power is wasted and the base suffers life-support brownouts during low-sunlight periods.",
+    "construction_cost": {
+      "energy": 20.0,
+      "water": 5.0
+    },
+    "energy_consumption": 1.5,
+    "production_rates": {},
+    "storage_Modifiers": {
+      "energy_capacity": 120.0
+    },
+    "maintenance_cost_per_day": 1.0,
+    "max_level": 3,
+    "planet_compatibility": [
+      "moon",
+      "mars"
+    ],
+    "functional_effects": {
+      "power_priority": 1
+    }
+  },
+  {
+    "id": "oxygen_generator",
+    "name": "Oxygen Generator Assembly (OGA)",
+    "category": "life_support",
+    "description": "Splits water molecules (2H2O -> 2H2 + O2) via solid polymer electrolysis (and CO2 Sabatier/MOXIE processing on Mars) to produce breathable oxygen.",
+    "educational_explanation": "Producing oxygen on-site saves massive launch weight, but electrolysis demands continuous electrical power and purified water feedwater\u2014demonstrating a classic ECLSS engineering trade-off.",
+    "construction_cost": {
+      "energy": 22.0,
+      "water": 10.0
+    },
+    "energy_consumption": 14.0,
+    "production_rates": {
+      "oxygen": 4.8,
+      "water_input": 4.0
+    },
+    "storage_Modifiers": {
+      "oxygen_capacity": 15.0
+    },
+    "maintenance_cost_per_day": 1.8,
+    "max_level": 3,
+    "planet_compatibility": [
+      "moon",
+      "mars"
+    ],
+    "functional_effects": {
+      "power_priority": 1
+    }
+  },
+  {
+    "id": "water_recycler",
+    "name": "Closed-Loop Water Recycler (WPA)",
+    "category": "life_support",
+    "description": "Distills, filters, and catalytically oxidizes cabin humidity condensate and crew wastewater back into potable water.",
+    "educational_explanation": "Water is the heaviest consumable in human spaceflight. Recycling 85\u201395% of crew water reduces external extraction demand at the cost of electrical power and filter maintenance.",
+    "construction_cost": {
+      "energy": 20.0,
+      "water": 8.0
+    },
+    "energy_consumption": 10.0,
+    "production_rates": {
+      "water_recovery_ratio": 0.78,
+      "water_bonus": 6.0
+    },
+    "storage_Modifiers": {
+      "water_capacity": 100.0
+    },
+    "maintenance_cost_per_day": 1.6,
+    "max_level": 3,
+    "planet_compatibility": [
+      "moon",
+      "mars"
+    ],
+    "functional_effects": {
+      "power_priority": 1
+    }
+  },
+  {
+    "id": "greenhouse",
+    "name": "Hydroponic Aeroponic Greenhouse",
+    "category": "life_support",
+    "description": "Controlled-environment agricultural dome using LED spectrum lighting to grow dwarf wheat, leafy greens, and tubers while scrubbing CO2.",
+    "educational_explanation": "A greenhouse produces fresh food and supplemental oxygen via photosynthesis, boosting crew health\u2014but it is a heavy consumer of both electrical power (LEDs) and irrigation water.",
+    "construction_cost": {
+      "energy": 28.0,
+      "water": 25.0
+    },
+    "energy_consumption": 16.0,
+    "production_rates": {
+      "food": 3.2,
+      "oxygen": 1.1,
+      "water_input": 6.5
+    },
+    "storage_Modifiers": {
+      "food_capacity": 35.0
+    },
+    "maintenance_cost_per_day": 1.8,
+    "max_level": 3,
+    "planet_compatibility": [
+      "moon",
+      "mars"
+    ],
+    "functional_effects": {
+      "power_priority": 2
+    }
+  },
+  {
+    "id": "radiation_shelter",
+    "name": "Regolith-Berm Radiation Shelter",
+    "category": "habitation",
+    "description": "Heavily shielded subterranean vault lined with sintered regolith and polyethylene water walls for solar storm protection.",
+    "educational_explanation": "During Solar Particle Events (SPEs), standard habitat hull walls may not block high-energy protons. Dedicated storm shelters drastically cut acute radiation dose.",
+    "construction_cost": {
+      "energy": 30.0,
+      "water": 20.0
+    },
+    "energy_consumption": 5.0,
+    "production_rates": {
+      "shielding_bonus": 32.0
+    },
+    "storage_Modifiers": {},
+    "maintenance_cost_per_day": 0.8,
+    "max_level": 3,
+    "planet_compatibility": [
+      "moon",
+      "mars"
+    ],
+    "functional_effects": {
+      "power_priority": 1,
+      "storm_protection": true
+    }
+  },
+  {
+    "id": "communication_station",
+    "name": "Deep Space Communication Array",
+    "category": "operations",
+    "description": "High-gain Ka-band parabolic dish and space-weather telemetry receiver connecting the outpost with Earth Mission Control.",
+    "educational_explanation": "Reliable communications provide advance warning of solar flares, allow science data downlinks, and keep crew connected with flight surgeons and engineers on Earth.",
+    "construction_cost": {
+      "energy": 18.0,
+      "water": 4.0
+    },
+    "energy_consumption": 7.0,
+    "production_rates": {
+      "science_points": 4.0,
+      "event_mitigation": 0.2
+    },
+    "storage_Modifiers": {},
+    "maintenance_cost_per_day": 1.2,
+    "max_level": 3,
+    "planet_compatibility": [
+      "moon",
+      "mars"
+    ],
+    "functional_effects": {
+      "power_priority": 2
+    }
+  },
+  {
+    "id": "medical_facility",
+    "name": "Crew Medical & Countermeasure Bay",
+    "category": "habitation",
+    "description": "Equipped with radiation dosimetry, telemedicine diagnostics, autonomous surgical care, and resistive exercise hardware.",
+    "educational_explanation": "Microgravity/partial-gravity deconditioning, minor trauma, and radiation stress require dedicated medical countermeasures to sustain astronaut performance.",
+    "construction_cost": {
+      "energy": 22.0,
+      "water": 12.0
+    },
+    "energy_consumption": 8.0,
+    "production_rates": {
+      "health_recovery": 4.5
+    },
+    "storage_Modifiers": {},
+    "maintenance_cost_per_day": 1.3,
+    "max_level": 3,
+    "planet_compatibility": [
+      "moon",
+      "mars"
+    ],
+    "functional_effects": {
+      "power_priority": 1
+    }
+  },
+  {
+    "id": "maintenance_workshop",
+    "name": "Robotics & Maintenance Workshop",
+    "category": "operations",
+    "description": "3D additive manufacturing bay and robotic servicing depot that automatically slows wear and restores facility condition.",
+    "educational_explanation": "Abrasive lunar and Martian dust degrades seals, bearings, and solar panels daily. On-site spare part fabrication and preventative maintenance prevent cascading system failures.",
+    "construction_cost": {
+      "energy": 24.0,
+      "water": 8.0
+    },
+    "energy_consumption": 9.0,
+    "production_rates": {
+      "auto_repair": 3.5
+    },
+    "storage_Modifiers": {},
+    "maintenance_cost_per_day": 1.0,
+    "max_level": 3,
+    "planet_compatibility": [
+      "moon",
+      "mars"
+    ],
+    "functional_effects": {
+      "power_priority": 2
+    }
+  },
+  {
+    "id": "rover_garage",
+    "name": "Pressurized Rover & ISRU Garage",
+    "category": "operations",
+    "description": "Deploys pressurized surface rovers to prospect and extract water-ice regolith from shadowed craters or subsurface glaciers.",
+    "educational_explanation": "Even a 93% efficient water recycler loses 7% of water over time, plus water split for oxygen. In-Situ Resource Utilization (ISRU) rovers replenish water reserves from local ice deposits.",
+    "construction_cost": {
+      "energy": 26.0,
+      "water": 10.0
+    },
+    "energy_consumption": 11.0,
+    "production_rates": {
+      "water": 11.0,
+      "science_points": 3.0
+    },
+    "storage_Modifiers": {
+      "water_capacity": 50.0
+    },
+    "maintenance_cost_per_day": 2.2,
+    "max_level": 3,
+    "planet_compatibility": [
+      "moon",
+      "mars"
+    ],
+    "functional_effects": {
+      "power_priority": 3
+    }
+  },
+  {
+    "id": "research_laboratory",
+    "name": "Planetary Science & Geology Lab",
+    "category": "science",
+    "description": "Analytical spectrometer and astrobiology laboratory for core samples, closed-loop ecology trials, and mission science objectives.",
+    "educational_explanation": "The core purpose of human outposts on the Moon and Mars is scientific discovery\u2014studying planetary evolution, searching for biosignatures, and testing technologies for deep space.",
+    "construction_cost": {
+      "energy": 25.0,
+      "water": 12.0
+    },
+    "energy_consumption": 10.0,
+    "production_rates": {
+      "science_points": 10.0
+    },
+    "storage_Modifiers": {},
+    "maintenance_cost_per_day": 1.4,
+    "max_level": 3,
+    "planet_compatibility": [
+      "moon",
+      "mars"
+    ],
+    "functional_effects": {
+      "power_priority": 3
+    }
+  }
+]

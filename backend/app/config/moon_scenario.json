@@ -1,0 +1,115 @@
+{
+  "id": "moon-shackleton-outpost",
+  "name": "Artemis Shackleton Crater Outpost",
+  "planet": "moon",
+  "tagline": "Establish humanity's permanent foothold at the Lunar South Pole.",
+  "description": "Command a lunar surface outpost on the rim of Shackleton Crater. Balance high daytime solar energy against deep shadow cycles, abrasive electrostatic lunar dust, intense unshielded cosmic radiation, and crater water-ice harvesting.",
+  "difficulty_default": "intermediate",
+  "default_duration_days": 15,
+  "default_crew_size": 4,
+  "environmental_constraints": {
+    "gravity_g": 0.166,
+    "solar_irradiance_factor": 1.0,
+    "lunar_night_cycle_days": [
+      6,
+      7,
+      13,
+      14
+    ],
+    "night_solar_multiplier": 0.22,
+    "baseline_radiation_msv_per_day": 1.35,
+    "dust_abrasion_rate": 2.4,
+    "atmosphere": "Vacuum (0 kPa) \u2014 Zero atmospheric radiation or thermal buffering",
+    "surface_temp_range_c": "-203\u00b0C (Shadowed Crater) to +121\u00b0C (Sunlit Rim)"
+  },
+  "major_hazards": [
+    "Solar Particle Events (SPEs) with zero atmospheric shielding",
+    "Lunar South Pole grazing-angle shadow periods reducing solar output by 78%",
+    "Electrostatic razor-sharp lunar regolith degrading seals and solar panels",
+    "Total reliance on closed-loop water recycling and crater ice extraction"
+  ],
+  "objectives": [
+    {
+      "id": "survive_duration",
+      "title": "Maintain crew survival for the full mission duration",
+      "type": "survival",
+      "target": 100
+    },
+    {
+      "id": "keep_oxygen_safe",
+      "title": "Keep Oxygen reserves above critical threshold (10 kg)",
+      "type": "resource_min",
+      "resource": "oxygen",
+      "target": 10
+    },
+    {
+      "id": "build_shelter_or_greenhouse",
+      "title": "Construct or upgrade at least 2 additional outpost facilities",
+      "type": "facility_count",
+      "target": 6
+    },
+    {
+      "id": "complete_research",
+      "title": "Accumulate at least 40 Planetary Science Points",
+      "type": "science_points",
+      "target": 40
+    }
+  ],
+  "starting_resources": {
+    "oxygen": {
+      "current": 45.0,
+      "capacity": 80.0,
+      "unit": "kg",
+      "critical": 10.0
+    },
+    "water": {
+      "current": 220.0,
+      "capacity": 360.0,
+      "unit": "L",
+      "critical": 40.0
+    },
+    "food": {
+      "current": 65.0,
+      "capacity": 120.0,
+      "unit": "kg",
+      "critical": 12.0
+    },
+    "energy": {
+      "current": 160.0,
+      "capacity": 240.0,
+      "unit": "kWh",
+      "critical": 30.0
+    },
+    "radiation_shielding": 55.0,
+    "cumulative_radiation_msv": 0.0,
+    "crew_health": 100.0,
+    "infrastructure_condition": 100.0,
+    "science_points": 0.0
+  },
+  "starting_facilities": [
+    {
+      "facility_id": "crew_habitat",
+      "level": 1,
+      "grid_x": 0.0,
+      "grid_z": 0.0
+    },
+    {
+      "facility_id": "solar_array",
+      "level": 1,
+      "grid_x": -6.0,
+      "grid_z": -4.0
+    },
+    {
+      "facility_id": "battery_storage",
+      "level": 1,
+      "grid_x": -6.0,
+      "grid_z": 2.0
+    },
+    {
+      "facility_id": "oxygen_generator",
+      "level": 1,
+      "grid_x": 5.0,
+      "grid_z": -3.0
+    }
+  ]
+}
