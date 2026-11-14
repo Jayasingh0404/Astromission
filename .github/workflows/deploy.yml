@@ -44,6 +44,7 @@ jobs:
         working-directory: frontend
         env:
           GITHUB_PAGES: 'true'
+          VITE_API_BASE_URL: 'https://astromission-backend-production.up.railway.app/api/v1'
         run: |
           npm run build
           cp dist/index.html dist/404.html
@@ -59,3 +60,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
